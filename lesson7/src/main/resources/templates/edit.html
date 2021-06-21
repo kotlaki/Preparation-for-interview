@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Edit Student</title>
+</head>
+
+<body>
+    <form method="post" th:object="${editStudent}" th:action="@{/students/save}">
+        <label>ID</label>
+        <input th:placeholder="*{id}" th:field = "*{id}" readonly>
+        <label>Name</label>
+        <input th:placeholder="*{name}" th:field = "*{name}">
+        <label>Age</label>
+        <input th:placeholder="*{age}" th:field = "*{age}">
+        <button type="submit">Save</button>
+    </form>
+</body>
