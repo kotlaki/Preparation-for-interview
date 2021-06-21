@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>List Students</title>
+</head>
+
+<body>
+
+<form th:action="@{/students/add}" method="post" th:object="${newStudent}" enctype="multipart/form-data">
+    <input type="text" placeholder="Введите имя" th:field = "*{name}">
+    <input type="text" placeholder="Введите возраст" th:field = "*{age}">
+    <button type="submit" class="btn btn-primary">Добавить</button>
+</form>
+
+<table class="table table-hover" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="list : ${userList}">
+        <th scope="row" th:text="${list.getId()}"></th>
+        <th scope="row" th:text="${list.getName()}"></th>
+        <th scope="row" th:text="${list.getAge()}"></th>
+        <th scope="row">
+            <a th:href="@{/students/edit/{id}(id = ${list.getId()})}" name="edit" type="submit">Edit</a>
+            <a th:href="@{/students/delete/{id}(id = ${list.getId()})}" type="submit" name="delete">Delete</a>
+        </th>
+    </tr>
+    </tbody>
+</table>
+</body>
+
+</html>
